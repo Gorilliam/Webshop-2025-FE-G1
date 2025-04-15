@@ -6,11 +6,13 @@ img {
 }
 
 .products-page-container {
-	height: 100%;
 	overflow-y: hidden;
+	display: flex;
+	flex-direction: column;
 }
 
 #products-page-main {
+	flex-grow: 1;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 	height: 100%;
