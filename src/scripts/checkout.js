@@ -56,9 +56,9 @@ function renderCheckoutForm() {
     miniCartContainer.innerHTML += `
             <div class="product">
                 <h4>${product.name}</h4>
-                <p>${product.price.toFixed()}:-</p>
+                <p>${product.price.toFixed(2)}:-</p>
                 <p>x${product.quantity}</p>
-                <p>= ${product.total.toFixed()}</p>
+                <p>= ${product.total.toFixed(2)}</p>
             </div>
         `
   }
@@ -67,11 +67,11 @@ function renderCheckoutForm() {
         <br>
         <p>
             <strong>= total</strong>:
-            ${total.toFixed()}:-
+            ${total.toFixed(2)}:-
         </p>
         <p style="font-size: 0.8em">
             <strong>varav moms</strong>:
-            ${moms.toFixed()}:-
+            ${moms.toFixed(2)}:-
         </p>
         <br>
     `
