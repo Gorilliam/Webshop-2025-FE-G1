@@ -4,6 +4,7 @@ import {
 } from '../utils/cartFunctions.js'
 import { showWelcomeMessage } from '../utils/api.js';
 import loadHeader from './header.js';
+import loadFooter from './footer.js';
 import loadUserContext from '../utils/userContext.js';
 
 // DOM
@@ -25,6 +26,7 @@ async function checkoutPage() {
   // startup
   await loadUserContext()
   await loadHeader()
+  await loadFooter()
   updateDOMWithCartData()
   renderCheckoutForm()
   showWelcomeMessage()
@@ -61,16 +63,12 @@ function renderCheckoutForm() {
   miniCartContainer.innerHTML += `
         <br>
         <p>
-            <strong>Delsumma</strong>:
-            ${subtotal.toFixed()}:-
-        </p>
-        <p>
-            <strong>+ moms</strong>:
-            ${moms.toFixed()}:-
-        </p>
-        <p>
             <strong>= total</strong>:
             ${total.toFixed()}:-
+        </p>
+        <p style="font-size: 0.8em">
+            <strong>varav moms</strong>:
+            ${moms.toFixed()}:-
         </p>
         <br>
     `

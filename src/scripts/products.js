@@ -1,6 +1,7 @@
 import { fetchProducts, fetchCategories, showWelcomeMessage } from "../utils/api.js";
 import loadUserContext from "../utils/userContext.js";
 import loadHeader from "./header.js";
+import loadFooter from "./footer.js";
 import {
   addProductToCart,
   updateDOMWithCartData,
@@ -11,6 +12,7 @@ productsPage()
 async function productsPage() {
   await loadUserContext()
   await loadHeader()
+  await loadFooter()
   updateDOMWithCartData()
   renderCategoryButtons()
   loadProducts()
@@ -121,11 +123,13 @@ function createProductCard(product) {
   const element = document.createElement("div");
   element.className = "product-card";
 
+  const price = product.price
+
   element.innerHTML = `
     <img src="${product.image}" alt="${product.name}">
     <h3>${product.name}</h3>
 		<h4><i> ${product.brand}</i>, ${product.amount}${product.unit}</h4>
-    <p>${product.price.toFixed(2)} kr</p>
+    <p>${price.toFixed(2)} kr</p>
     <button class="add-to-cart-btn">Lägg i varukorg</button>
   `;
 

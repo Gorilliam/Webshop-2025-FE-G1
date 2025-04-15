@@ -86,7 +86,7 @@ export function removeProductFromCart(_id, removeAll) {
 */
 export function getAggregatedCart() {
 	const cart = getCartFromLocalStorage()
-	const aggregatedCart = { products: [], subtotal: 0, moms: 0, total: 0, cart }
+	const aggregatedCart = { products: [], moms: 0, total: 0, cart }
 	for (const product of cart) {
 		// Find existing product
 		let existing = aggregatedCart.products.find(p => p._id === product._id);
@@ -104,11 +104,11 @@ export function getAggregatedCart() {
 		// count
 		existing.quantity++;
 		existing.total += product.price;
-		aggregatedCart.subtotal += product.price;
+		aggregatedCart.total += product.price;
 	}
 
-	aggregatedCart.moms = aggregatedCart.subtotal * 0.12;
-	aggregatedCart.total = aggregatedCart.subtotal + aggregatedCart.moms;
+	aggregatedCart.moms = aggregatedCart.total * 0.12;
+	console.log("aggregatedCart:", aggregatedCart)
 	return aggregatedCart
 }
 
@@ -122,7 +122,7 @@ export function renderCart(id = "") {
 
 	cartTableContainer.innerHTML = ""
 
-	const {cart, products, subtotal, moms, total} = getAggregatedCart()
+	const {products, total, moms} = getAggregatedCart()
 
 	// handle empty cart
 	if (products.length < 1) {
@@ -153,7 +153,7 @@ export function renderCart(id = "") {
 				</td>
 				<td>
 					<h4>${product.name} <span class="quantity">x${product.quantity}</span></h4>
-					<p>${product.total.toFixed(0)}:- <span class="styck">(${product.price}/st)</span></p>
+					<p>${product.total.toFixed(0)}:- <span class="styck">(${product.price}kr/st)</span></p>
 					<div class="controls">
 						<button class="ta-bort-alla-${product._id}">
 							<img src="/public/trash.svg" alt="trash can" width="20">
@@ -180,16 +180,12 @@ export function renderCart(id = "") {
 	cartTable.append(tfoot)
 	tfoot.innerHTML = `
 		<tr>
-			<th>Delsumma</th>
-			<td>${subtotal.toFixed(2)} SEK</td>
-		</tr>
-		<tr>
-			<th>Moms</th>
-			<td>${moms.toFixed(2)} SEK</td>
-		</tr>
-		<tr>
 			<th>Total</th>
 			<td>${total.toFixed(2)} SEK</td>
+		</tr>
+		<tr style="font-size: 0.8em;">
+			<th>Varav moms</th>
+			<td>${moms.toFixed(2)} SEK</td>
 		</tr>
 	`
 

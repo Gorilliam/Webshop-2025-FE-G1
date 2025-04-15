@@ -1,6 +1,7 @@
 import { fetchProducts, showWelcomeMessage } from "../utils/api.js";
 import loadUserContext from "../utils/userContext.js"
 import loadHeader from "./header.js";
+import loadFooter from "./footer.js";
 import {
   addProductToCart,
   getCartFromLocalStorage,
@@ -16,6 +17,7 @@ async function index() {
   await loadUserContext()
   await loadHeader()
   await loadProducts();
+  await loadFooter()
   updateDOMWithCartData();
   showWelcomeMessage()
 }
