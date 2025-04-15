@@ -9,6 +9,10 @@
   --lite-grey: var(--lite-gray);
 }
 
+html, body {
+  max-width: 100dvw;
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
