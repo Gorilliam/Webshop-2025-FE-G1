@@ -31,23 +31,23 @@
 
         <label>
             <span>Förnamn</span>
-            <input maxlength="100" type="text" name="firstName">
+            <input maxlength="100" minlength="1" type="text" name="firstName">
         </label>
         <label>
             <span>Efternamn</span>
-            <input maxlength="100" type="text" name="lastName">
+            <input maxlength="100" minlength="1"type="text" name="lastName">
         </label>
         <label>
             <span>Email</span>
-            <input maxlength="100" type="text" name="email">
+            <input maxlength="100" minlength="4" type="text" name="email">
         </label>
         <label>
             <span>Gatuadress</span>
-            <input maxlength="100" type="text" name="streetAddress">
+            <input maxlength="100" minlength="3" mintype="text" name="streetAddress">
         </label>
         <label>
             <span>Postort</span>
-            <input maxlength="100" type="text" name="city">
+            <input maxlength="100" minlength="1"type="text" name="city">
         </label>
         <label>
             <span>Postnummer</span>
@@ -55,7 +55,7 @@
         </label>
         <label>
             <span>Telefonnummer</span>
-            <input maxlength="100" type="text" name="phoneNumber">
+            <input maxlength="100" minlength="4" type="text" name="phoneNumber">
         </label>
         <button id="order-button">
             Beställ
