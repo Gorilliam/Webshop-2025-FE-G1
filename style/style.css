@@ -167,6 +167,7 @@ body {
   transform-origin: top;
   transition: 125ms;
   width: 100%;
+  z-index: 1000;
 
   & > * {
     border: 0;
