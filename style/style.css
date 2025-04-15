@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 :root {
-  font-family: Arial, sans-serif;
   color: #333;
   background-color: #fff;
 
@@ -7,6 +8,10 @@
   --lite-green: #a4eede;
   --lite-gray: #eaeaea;
   --lite-grey: var(--lite-gray);
+}
+
+body, button, input, textarea, select, option {
+  font-family: Quicksand, Arial, sans-serif;
 }
 
 html, body {

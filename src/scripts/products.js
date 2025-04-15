@@ -24,6 +24,12 @@ function createCategoryButton(category) {
   const btn = document.createElement("button");
   btn.classList.add(`category-button`);
   btn.innerText = category.name;
+
+  const arrow = document.createElement('img')
+  arrow.src = `/img/rarr.svg`
+  arrow.width = 30
+  btn.append(arrow)
+
   btn.addEventListener("click", function () {
     // Define a function that will be called when the category-button is clicked:
     handleCategoryButtonClick(category.name, btn);
@@ -39,6 +45,10 @@ async function renderCategoryButtons() {
   allProductsBtn.innerText = "Alla produkter";
   allProductsBtn.classList.add("category-button");
   allProductsBtn.classList.add("selected")
+  const arrow = document.createElement('img')
+  arrow.src = `/img/rarr.svg`
+  arrow.width = 30
+  allProductsBtn.append(arrow)
   allProductsBtn.addEventListener("click", () => {
     loadProducts()
     document.querySelectorAll('.category-button').forEach(btn => {
