@@ -9,6 +9,9 @@ import loadUserContext from '../utils/userContext.js';
 
 // DOM
 const form = document.querySelector('form')
+const orderBtn = document.querySelector('#order-button')
+const formErrorSpan = document.querySelector('.form-error')
+const displayError = (msg = "") => formErrorSpan.innerText = msg;
 
 // Auto-fill form with data from localStorage if user is logged in
 const firstName = localStorage.getItem("firstName");
@@ -84,8 +87,19 @@ function autofillFormWithTestData() {
   form.phoneNumber.value = "077 321 06 04"
 }
 
+function disableOrderButton() {
+  orderBtn.disabled = true
+}
+
+function enableOrderButton() {
+  orderBtn.disabled = false
+}
+
 async function handleCheckout(e) {
   e.preventDefault()
+  disableOrderButton()
+  // reset error
+  displayError()
   console.log(" Form submitted — ready to process order");
 
   // 2: Validate the required fields before sending the request
@@ -102,7 +116,8 @@ async function handleCheckout(e) {
   for (const name of requiredFields) {
     const value = form[name].value.trim();
     if (!value) {
-      alert(`Vänligen fyll i: ${name}`);
+      displayError(`Vänligen fyll i: ${name}`);
+      enableOrderButton()
       return;
     }
   }
@@ -111,27 +126,16 @@ async function handleCheckout(e) {
   const { products } = getAggregatedCart();
 
   if (!products || products.length === 0) {
-    alert("Din varukorg är tom. Lägg till produkter innan du beställer."); // "Your cart is empty"
+    displayError("Din varukorg är tom. Lägg till produkter innan du beställer."); // "Your cart is empty"
+    toggleOrderButton(trure)
     return;
   }
 
   // 4A: Extract the User id (if logged in)
   localStorage.getItem('hakim-livs-token')
 
-  function getUserIdFromToken() {
-    const token = localStorage.getItem('hakim-livs-token');
-    if (!token) return null;
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      return payload._id;
-    } catch (err) {
-      console.error("Invalid token:", err);
-      return null;
-    }
-  }
-
   // 4B: Build the request payload and include the user id if available
-  const userId = getUserIdFromToken(); // extract user ID from token
+  const userId = globalThis.user?._id; // extract user ID from token
 
   const body = {
     firstName: form.firstName.value.trim(),
@@ -182,13 +186,14 @@ async function handleCheckout(e) {
     // prevent it from showing again when the user goes back to the cart
     localStorage.setItem("hakim-livs-cart", JSON.stringify([]));
     updateDOMWithCartData(); // This updates cart icon etc.
-    alert("Tack för din beställning!"); // alert order confirmation
+    displayError("Tack för din beställning!"); // displayError order confirmation
 
 
 
   } catch (err) {
     console.error(" Error placing order:", err.message);
-    alert("Kunde inte skicka beställningen. Försök igen.");
+    enableOrderButton()
+    displayError("Kunde inte skicka beställningen. Försök igen.");
   }
 }
 
