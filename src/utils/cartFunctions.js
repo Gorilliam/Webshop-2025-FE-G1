@@ -153,7 +153,7 @@ export function renderCart(id = "") {
 				</td>
 				<td>
 					<h4>${product.name} <span class="quantity">x${product.quantity}</span></h4>
-					<p>${product.total.toFixed(0)}:- <span class="styck">(${product.price}kr/st)</span></p>
+					<p>${product.total.toFixed(2)}:- <span class="styck">(${product.price.toFixed(2)}kr/st)</span></p>
 					<div class="controls">
 						<button class="ta-bort-alla-${product._id}">
 							<img src="/public/trash.svg" alt="trash can" width="20">
