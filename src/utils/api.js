@@ -37,9 +37,15 @@ export function isAdmin() {
 
 export function showWelcomeMessage() {
   const welcomeMsg = document.getElementById("welcomeMessage");
+  const loggedOutDiv = document.querySelector("#loggedOut")
 
   if (globalThis.loggedIn && welcomeMsg) {
     welcomeMsg.innerText = `Inloggad som: ${globalThis.user.firstName} (${globalThis.user.email})`
+  } else if (loggedOutDiv) {
+    loggedOutDiv.innerHTML = `
+      <h4>Du är inte inloggad</h4>
+      <a href="/login.html">Klicka här</a> för att logga in eller skapa ett konto.
+    `
   }
 }
 

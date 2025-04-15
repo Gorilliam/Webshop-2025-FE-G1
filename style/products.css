@@ -4,3 +4,42 @@ img {
 	max-width: 160px;
 	max-height: 200px;
 }
+
+.products-page-container {
+	height: 100%;
+	overflow-y: hidden;
+}
+
+#products-page-main {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	height: 100%;
+}
+
+#category-buttons {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow-y: auto;
+
+	& button {
+		border: 0;
+		padding: 1rem;
+		cursor: pointer;
+		text-align: right;
+
+		&.selected {
+			font-weight: bold;
+			background-color: navy;
+			color: white;
+			&::after {
+				content: "    --->";
+			}
+		}
+	}
+}
+
+#products {
+	height: 100%;
+	overflow-y: auto;
+}

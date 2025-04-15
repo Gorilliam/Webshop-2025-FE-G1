@@ -11,11 +11,4 @@ async function cart() {
   updateDOMWithCartData();
   renderCart();
   showWelcomeMessage()
-  if (!globalThis.loggedIn) {
-    const loggedOutDiv = document.querySelector("#loggedOut")
-    loggedOutDiv.innerHTML = `
-      <h4>Du är inte inloggad</h4>
-      <a href="/login.html">Klicka här</a> för att logga in eller skapa ett konto.
-    `
-  }
 }
