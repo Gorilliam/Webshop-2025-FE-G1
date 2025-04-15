@@ -71,7 +71,7 @@ async function renderCategoryButtons() {
 // ( consider adding a function to api.js for this ... ? )
 async function handleCategoryButtonClick(categoryName, btn) {
   const productsContainer = document.getElementById("products");
-  productsContainer.innerHTML = "<p>&nbsp; Laddar produkter... </p> 👁👄👁";
+  productsContainer.innerHTML = "<p class='laddar-produkter'>&nbsp; Laddar produkter... <br> <span class='big'>👁👄👁</span></p> ";
 
   // remove selected from all category buttons except the one clicked
   document.querySelectorAll('.category-button').forEach(btn2 => {
@@ -108,7 +108,7 @@ async function handleCategoryButtonClick(categoryName, btn) {
 // Function to fetch and render products
 async function loadProducts() {
   const productsContainer = document.getElementById("products");
-  productsContainer.innerHTML = "<p>&nbsp; Laddar produkter... </p> 👁👄👁";
+  productsContainer.innerHTML = "<p class='laddar-produkter'>&nbsp; Laddar produkter... <br> <span class='big'>👁👄👁</span></p> ";
 
   //#region Sort-btn code draft
   // //  Functionality for sorting alphabetically, unfinished (for sprint2): //
