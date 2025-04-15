@@ -1,20 +1,21 @@
 import { fetchProducts, fetchCategories } from "../utils/api.js";
+import loadUserContext from "../utils/userContext.js";
+import loadHeader from "./header.js";
 import {
   addProductToCart,
   updateDOMWithCartData,
 } from "../utils/cartFunctions.js";
-import { toggleAdminLink } from "../utils/api.js";
 
-document.addEventListener("DOMContentLoaded", function () {
-  updateDOMWithCartData();
-});
+productsPage()
 
-// additional eventListener line for loading in the categoryButtons also
-document.addEventListener("DOMContentLoaded", () => {
-  renderCategoryButtons();
-  loadProducts();
-  toggleAdminLink();
-});
+async function productsPage() {
+  await loadUserContext()
+  await loadHeader()
+  updateDOMWithCartData()
+  renderCategoryButtons()
+  loadProducts()
+}
+
 
 function createCategoryButton(category) {
   const btn = document.createElement("button");
@@ -124,17 +125,3 @@ function createProductCard(product) {
   return element;
 }
 
-// async function loadCategories(product) {
-// 	const categoryButtons = document.getElementById("category-buttons");
-
-// 	categoryButtons = await fetchProducts();
-// 	const element = document.createElement("div");
-// 	element.className = "category";
-
-// 	categories.innerHTML = `
-//     <p>${product.category}</p>
-//   `;
-// 	return categories;
-// }
-
-// function createCategory() {}

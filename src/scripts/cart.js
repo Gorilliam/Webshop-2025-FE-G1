@@ -1,25 +1,21 @@
+import loadUserContext from "../utils/userContext.js";
+import { showWelcomeMessage } from "../utils/api.js";
 import { updateDOMWithCartData, renderCart } from "../utils/cartFunctions.js";
-import { toggleAdminLink } from "../utils/api.js";
+import loadHeader from "./header.js";
 
-document.addEventListener("DOMContentLoaded", function () {
+cart()
+
+async function cart() {
+  await loadUserContext()
+  await loadHeader()
   updateDOMWithCartData();
   renderCart();
-  toggleAdminLink();
-    //  Show logged-in info or login prompt
-    const userName = localStorage.getItem("firstName");
-    const userEmail = localStorage.getItem("userEmail");
-  
-    const loginPrompt = document.getElementById("loginPrompt");
-    const loginStatus = document.getElementById("loginStatus");
-  
-    if (userName && userEmail) {
-      if (loginPrompt) loginPrompt.style.display = "none";
-      if (loginStatus) {
-        loginStatus.textContent = `Inloggad som: ${userName} (${userEmail})`;
-        loginStatus.style.display = "block";
-      }
-    } else {
-      if (loginPrompt) loginPrompt.style.display = "block";
-      if (loginStatus) loginStatus.style.display = "none";
-    }
-});
+  showWelcomeMessage()
+  if (!globalThis.loggedIn) {
+    const loggedOutDiv = document.querySelector("#loggedOut")
+    loggedOutDiv.innerHTML = `
+      <h4>Du är inte inloggad</h4>
+      <a href="/login.html">Klicka här</a> för att logga in eller skapa ett konto.
+    `
+  }
+}

@@ -6,6 +6,8 @@
     <title>Hakim Livs</title>
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/cart.css">
+
+    <script type="module" defer src="./src/scripts/cart.js"></script>
   </head>
   <body>
 
@@ -38,8 +40,8 @@
     <!-- MAIN CONTENT -->
     <main class="main-content">
       <h1>Din korg</h1>
-      <p id="loginPrompt">Har du ett konto? <a href="login.html">Logga in</a>.</p>
-      <p id="loginStatus" style="display: none;"></p>
+      <p id="welcomeMessage"></p>
+      <div id="loggedOut"></div>
       <div class="cart-table-container">
         <!-- Rendered in cartFunctions.js via cart.js -->
       </div>
@@ -57,7 +59,6 @@
       </div>
     </footer>
 
-    <!-- PAGE-SPECIFIC JAVASCRIPT -->
-    <script type="module" src="./src/scripts/cart.js"></script>
+
   </body>
 </html>

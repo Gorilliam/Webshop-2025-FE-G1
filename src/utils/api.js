@@ -35,33 +35,15 @@ export function isAdmin() {
   return localStorage.getItem("isAdmin") === "true";
 }
 
-export async function toggleAdminLink() {
-  const res = await fetch(getBaseUrl() + "api/auth/me", {
-    headers: {
-      "hakim-livs-token": localStorage.getItem('hakim-livs-token')
-    }
-  })
-  
-  const data = await res.json()
+export function showWelcomeMessage() {
+  const welcomeMsg = document.getElementById("welcomeMessage");
 
-  const loginLi = document.getElementById('login-li')
-  const adminLi = document.getElementById('admin-li')
-
-  if (!data.isAdmin && adminLi) {
-    adminLi.style.display = 'none'
-  }
-
-  if (data._id) {
-    // logged in
-    const logOutButton = document.createElement('button')
-    logOutButton.innerText = "Logga ut"
-    logOutButton.addEventListener('click', logOut)
-    loginLi.innerHTML = ""
-    loginLi.append(logOutButton)
+  if (globalThis.loggedIn && welcomeMsg) {
+    welcomeMsg.innerText = `Inloggad som: ${globalThis.user.firstName} (${globalThis.user.email})`
   }
 }
 
-function logOut() {
+export function logOut() {
   localStorage.removeItem('hakim-livs-token')
   localStorage.removeItem('isAdmin')
   localStorage.removeItem('firstName')

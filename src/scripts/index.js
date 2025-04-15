@@ -1,4 +1,6 @@
-import { fetchProducts } from "../utils/api.js";
+import { fetchProducts, showWelcomeMessage } from "../utils/api.js";
+import loadUserContext from "../utils/userContext.js"
+import loadHeader from "./header.js";
 import {
   addProductToCart,
   getCartFromLocalStorage,
@@ -6,13 +8,17 @@ import {
   updateLocalStorageCart,
   updateDOMWithCartData,
 } from "../utils/cartFunctions.js";
-import { toggleAdminLink } from "../utils/api.js";
+// import { toggleAdminLink } from "../utils/api.js";
 
-document.addEventListener("DOMContentLoaded", function () {
-  loadProducts();
+index()
+
+async function index() {
+  await loadUserContext()
+  await loadHeader()
+  await loadProducts();
   updateDOMWithCartData();
-  toggleAdminLink();
-});
+  showWelcomeMessage()
+}
 
 // Function to fetch and render products
 async function loadProducts() {
@@ -55,28 +61,3 @@ function createProductCard(product) {
   return element;
 }
 
-// display the user's email and admin status
-// in the welcome message
-// and show/hide the admin panel link accordingly
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const firstName = localStorage.getItem("firstName");
-  const email = localStorage.getItem("userEmail");
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
-  
-  const welcomeMsg = document.getElementById("welcomeMessage");
-  
-  if (firstName && email) {
-    welcomeMsg.textContent = `Inloggad som: ${firstName} (${email})`;
-
-    const adminLink = document.getElementById("admin-link");
-    if (isAdmin) {
-      // Show admin panel 
-      adminLink.style.display = "block";
-    } else {
-      // Hide it if user is not admin
-      adminLink.style.display = "none";
-    }
-  }
-});
