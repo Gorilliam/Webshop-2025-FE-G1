@@ -35,6 +35,7 @@ body {
 .logo{
   max-width: 160px;
   max-height: 200px;
+  margin-left: 0.6rem;
 }
 .logo-container{
   display: flex;

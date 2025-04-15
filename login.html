@@ -18,16 +18,14 @@
                 <p>Logga in för att få ut mer av din shopping!</p>
                 <form id="loginForm">
                   <div class="input-container">
-                    <input type="email" id="username" placeholder="E-postadress" required />
+                    <input type="email" maxlength="100" id="username" placeholder="E-postadress" required />
                   </div>
                   <div class="password-container">
-                    <input type="password" id="password" placeholder="Password" required />
+                    <input type="password" maxlength="100" id="password" placeholder="Password" required />
                     <i class="fas fa-eye" id="togglePassword"></i>
                   </div>
                   <button type="submit" id="loginBtn">Logga in</button>
                 </form>
-
-                <p><a href="#">Glömt lösenord?</a></p>
 
                 <div class="separator"></div>
 
@@ -42,20 +40,20 @@
               <p>Fyll i din information nedan för att skapa ett konto.</p>
               <form id="registerForm">
                 <div class="input-container">
-                  <input type="text" id="registerFirstName" placeholder="Förnamn" required />
+                  <input type="text" maxlength="100" id="registerFirstName" placeholder="Förnamn" required />
                 </div>
                 <div class="input-container">
-                  <input type="text" id="registerLastName" placeholder="Efternamn" required />
+                  <input type="text" maxlength="100" id="registerLastName" placeholder="Efternamn" required />
                 </div>
                 <div class="input-container">
-                  <input type="email" id="registerEmail" placeholder="E-postadress" required />
+                  <input type="email" maxlength="100" id="registerEmail" placeholder="E-postadress" required />
                 </div>
                 <div class="password-container">
-                  <input type="password" id="registerPassword" placeholder="Lösenord" required />
+                  <input type="password" maxlength="100" minlength ="8" id="registerPassword" placeholder="Lösenord" required />
                   <i class="fas fa-eye" id="toggleRegisterPassword"></i>
                 </div>
                 <div class="password-container">
-                  <input type="password" id="confirmPassword" placeholder="Bekräfta lösenord" required />
+                  <input type="password" maxlength="100" minlength ="8" id="confirmPassword" placeholder="Bekräfta lösenord" required />
                   <i class="fas fa-eye" id="toggleConfirmPassword"></i>
                 </div>
                 <button type="submit" id="registerBtn">Skapa kontot!</button>
