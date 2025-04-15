@@ -1,6 +1,6 @@
 /* TEMPORARILY CALLING ALL IMG BECAUSE NO CLASS/ID ASSIGNED TO PRODUCTS ELEMENTS YET*/
 
-img {
+.product-card img {
 	max-width: 160px;
 	max-height: 200px;
 }
@@ -15,14 +15,12 @@ img {
 	flex-grow: 1;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
-	height: 100%;
 }
 
 #category-buttons {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	overflow-y: auto;
+
 
 	& button {
 		border: 0;
@@ -32,8 +30,9 @@ img {
 
 		&.selected {
 			font-weight: bold;
-			background-color: navy;
+			background-color: var(--dark-green);
 			color: white;
+
 			&::after {
 				content: "    --->";
 			}
@@ -42,8 +41,68 @@ img {
 }
 
 #products {
-	height: 100%;
-	overflow-y: auto;
+
+	padding: 1rem;
+}
+
+/* Products */
+#products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+}
+
+.product-card {
+	border: 1px solid #ddd;
+	border-radius: 1rem;
+	padding: 1rem;
+	text-align: center;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	& h3,
+	h4,
+	p {
+		margin: .25rem;
+	}
+}
+
+.spacer {
+	flex-grow: 1;
+}
+
+.product-card button {
+	background: lightgray;
+	border: none;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+
+	&:hover {
+		background: #b1b1b1;
+	}
+
+	&:active {
+		background: #8b8b8b;
+	}
+}
+
+.product-card-controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+
+	& button {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		border-radius: 50%;
+		align-items: center;
+		justify-content: center;
+	}
 }
 
 .moms {
