@@ -32,10 +32,17 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+.logo{
+  max-width: 160px;
+  max-height: 200px;
+}
+.logo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.version {
+  margin-left: 7%;
 }
 
 .nav-links {
