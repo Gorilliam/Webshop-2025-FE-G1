@@ -152,10 +152,12 @@ function createProductCard(product) {
 
   element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
     addProductToCart(product);
+    updateDOMWithCartData()
   });
 
   element.querySelector(".remove-from-cart-btn").addEventListener("click", () => {
     removeProductFromCart(product._id);
+    updateDOMWithCartData()
   });
 
   return element;
