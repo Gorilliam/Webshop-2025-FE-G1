@@ -63,16 +63,12 @@ function renderCheckoutForm() {
   miniCartContainer.innerHTML += `
         <br>
         <p>
-            <strong>Delsumma</strong>:
-            ${subtotal.toFixed()}:-
-        </p>
-        <p>
-            <strong>+ moms</strong>:
-            ${moms.toFixed()}:-
-        </p>
-        <p>
             <strong>= total</strong>:
             ${total.toFixed()}:-
+        </p>
+        <p style="font-size: 0.8em">
+            <strong>varav moms</strong>:
+            ${moms.toFixed()}:-
         </p>
         <br>
     `
