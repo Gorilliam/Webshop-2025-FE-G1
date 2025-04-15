@@ -112,12 +112,22 @@ async function handleCheckout(e) {
     'postcode',
     'phoneNumber'
   ];
-
+  
+  const fieldLabels = {
+    firstName: 'Förnamn',
+    lastName: 'Efternamn',
+    email: 'Email',
+    streetAddress: 'Gatuadress',
+    city: 'Postort',
+    postcode: 'Postnummer',
+    phoneNumber: 'Telefonnummer'
+  };
+  
   for (const name of requiredFields) {
     const value = form[name].value.trim();
     if (!value) {
-      displayError(`Vänligen fyll i: ${name}`);
-      enableOrderButton()
+      displayError(`Vänligen fyll i ${fieldLabels[name]}`);
+      enableOrderButton();
       return;
     }
   }
