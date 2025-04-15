@@ -16,7 +16,7 @@ export default async function loadHeader() {
         // navLinksUl.append(logOutLi)
         navLinksUl.insertAdjacentHTML('beforeend', `
             <li>
-                <p>Welcome: </p>
+                <p>Välkommen: </p>
             </li>
         `)
 
