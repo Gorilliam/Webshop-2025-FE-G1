@@ -45,3 +45,8 @@ img {
 	height: 100%;
 	overflow-y: auto;
 }
+
+.moms {
+	font-size: 0.7rem;
+	font-style: italic;
+}

@@ -4,6 +4,7 @@ import {
 } from '../utils/cartFunctions.js'
 import { showWelcomeMessage } from '../utils/api.js';
 import loadHeader from './header.js';
+import loadFooter from './footer.js';
 import loadUserContext from '../utils/userContext.js';
 
 // DOM
@@ -25,6 +26,7 @@ async function checkoutPage() {
   // startup
   await loadUserContext()
   await loadHeader()
+  await loadFooter()
   updateDOMWithCartData()
   renderCheckoutForm()
   showWelcomeMessage()
