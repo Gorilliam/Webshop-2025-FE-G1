@@ -40,7 +40,7 @@ export function showWelcomeMessage() {
   const loggedOutDiv = document.querySelector("#loggedOut")
 
   if (globalThis.loggedIn && welcomeMsg) {
-    welcomeMsg.innerText = `Inloggad som: ${globalThis.user.firstName} (${globalThis.user.email})`
+    // welcomeMsg.innerText = `Inloggad som: ${globalThis.user.firstName} (${globalThis.user.email})`
   } else if (loggedOutDiv) {
     loggedOutDiv.innerHTML = `
       <h4>Du är inte inloggad</h4>

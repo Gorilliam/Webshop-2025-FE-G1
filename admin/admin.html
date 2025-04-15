@@ -4,9 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.4/axios.min.js" integrity="sha512-2A1+/TAny5loNGk3RBbk11FwoKXYOMfAK6R7r4CpQH7Luz4pezqEGcfphoNzB7SM4dixUoJsKkBsB6kg+dNE2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/admin.css">
+    <link rel="stylesheet" href="./styles/admin-Product.css">
+
+    <script src="./scripts/admin.js" type="module" defer></script>
+    <script src="./scripts/admin-addProduct.js" defer></script>
+    <script src="./scripts/admin-Product.js" defer></script>
 </head>
 <body>
-<!--  created by mistake no use of it the main admin panel name is admin-product.html and all other amin related things are linked with that file  -->
+    <div class="admin-loading">
+        <h1>Laddar...</h1>
+    </div>
+    <div class="admin-error hidden">
+        <h1>Du måste vara admin för att komma åt detta.</h1>
+        <a href="/login.html">Tillbaka till inloggning &rarr;</a>
+    </div>
+
+    <div class="admin-container hidden">
+        
+        <aside class="sidebar">
+            <h2 class="logo">Admin Panel</h2>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <h2 class="content-header">Product-Management (main-version)</h2>
+            <div class="products-header">
+                <h3>Add, edit, remove and list products here</h3>
+                
+            </div>
+            
+            <div class="products-filters">
+                <select class="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Dairy">Dairy</option>
+                </select>
+                <input type="text" placeholder="Search products..." class="search-box">
+                
+                <button class="add-product-btn btn btn-primary" id="addProductBtn" class="btn btn-primary"> + Add New Product</button>
+                <div id="productFormContainer">
+                    <div class="product-form">
+                        <div class="form-header">
+                            <h2>Add Product</h2>
+                            <button id="cancelFormBtn">X</button>
+                        </div>
+                
+                        <form id="productForm">
+                            <label>Image URL</label>
+                            <input type="text" id="productImage" placeholder="Enter Image URL">
+                
+                            <label>Product Name</label>
+                            <input type="text" id="productName" placeholder="Enter Product Name">
+                
+                            <label>Price (kr)</label>
+                            <input type="number" id="productPrice" placeholder="Enter Price" step="0.01">
+                
+                            <label for="productUnit">Unit of Measurement:</label>
+                            <select id="productUnit" name="productUnit" required>
+                                <option value="kg">kg</option>
+                                <option value="mg">mg</option>
+                                <option value="g">g</option>
+                                <option value="ml">ml</option>
+                                <option value="cl">cl</option>
+                                <option value="l">l</option>
+                                <option value="pcs">pcs</option>
+                                <option value="st">st</option>
+                                <option value="oz">oz</option>
+                                <option value="lb">lb</option>
+                            </select>
+
+                            <label for="productQuantity">Quantity/Unit:</label>
+                            <input type="number" id="productQuantity" name="productQuantity" min="1" required>
+
+                            <label>Brand</label>
+                            <input type="text" id="productBrand" placeholder="Enter Brand Name">
+                
+                            <label>Discount(as decimal between 0 and 1)</label>
+                            <input 
+                                type="number"   
+                                id="productDiscount"  
+                                placeholder="e.g. 0.5 for 50%"
+                                step="0.01" min="0" max="1"
+                                required>
+                
+                            <label>Description</label>
+                            <textarea id="productDescription" placeholder="Enter Product Description"></textarea>
+                
+                            <label>Category</label>
+                            <select id="productCategory">
+                                <option>Loading categories...</option>
+                            </select>
+
+                
+                            <label>Stock</label>
+                            <input type="number" id="productStock" placeholder="Enter Stock Quantity">
+                            <div class="buttons-container">
+                            <!-- Submit & Cancel Buttons -->
+                                <button type="submit" class="save-btn">Save Product</button>
+                                <button type="button" id="cancelFormBtnBottom" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-box">
+                <table class="products-table">
+                    <thead>
+                      <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Pack Size</th>
+                        <th>Brand</th>
+                        <th>Discount</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Stock</th>
+                      </tr>
+                    </thead>
+                    <tbody id="productBody">
+                        <!-- Product Rows Will Go Here -->
+                    </tbody>
+                </table>
+            </div>
+        
+        </main>
+    </div>
 </body>
 </html>
