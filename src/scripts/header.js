@@ -24,7 +24,7 @@ export default async function loadHeader() {
             {text: "Logga ut", callback: logOut}
         ]
 
-        if (globalThis.isAdmin) dropdownItems.push({text: "Admin panel", href:"/admin"});
+        if (globalThis.isAdmin) dropdownItems.push({text: "Admin panel", href:"/admin/admin.html"});
 
         navLinksUl.insertAdjacentElement('beforeend', createDropdown({
             innerHTML: globalThis.user.firstName,
