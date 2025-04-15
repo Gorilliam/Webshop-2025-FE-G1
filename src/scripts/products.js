@@ -4,6 +4,7 @@ import loadHeader from "./header.js";
 import loadFooter from "./footer.js";
 import {
   addProductToCart,
+  removeProductFromCart,
   updateDOMWithCartData,
 } from "../utils/cartFunctions.js";
 
@@ -13,10 +14,10 @@ async function productsPage() {
   await loadUserContext()
   await loadHeader()
   await loadFooter()
-  updateDOMWithCartData()
   renderCategoryButtons()
-  loadProducts()
+  await loadProducts()
   showWelcomeMessage()
+  updateDOMWithCartData()
 }
 
 
@@ -39,7 +40,16 @@ async function renderCategoryButtons() {
   allProductsBtn.innerText = "Alla produkter";
   allProductsBtn.classList.add("category-button");
   allProductsBtn.classList.add("selected")
-  allProductsBtn.addEventListener("click", loadProducts);
+  allProductsBtn.addEventListener("click", () => {
+    loadProducts()
+    document.querySelectorAll('.category-button').forEach(btn => {
+      if (btn === allProductsBtn) {
+        btn.classList.add('selected')
+      } else {
+        btn.classList.remove('selected')
+      }
+    })
+  });
   container.appendChild(allProductsBtn);
 
   categories.forEach((category) => {
@@ -83,6 +93,7 @@ async function handleCategoryButtonClick(categoryName, btn) {
     console.error("✗ Error fetching filtered products:", error);
     productsContainer.innerHTML = `<p class="error-msg"><i>&nbsp; Hoppsan! 🤷<br> Något ville inte när vi försökte ladda de filtrerade produkterna. </i> &nbsp;</p> ¯\_(ツ)_/¯`;
   }
+  updateDOMWithCartData()
 }
 
 // Function to fetch and render products
@@ -111,9 +122,9 @@ async function loadProducts() {
       productsContainer.innerHTML =
         "<p class=`error-msg`> Inga produkter fanns att hämta. 🤷</p>";
     }
-  } catch (error) {
-    console.error("✗ Error fetching products:", error);
-    productsContainer.innerHTML =
+  } catch (error) {const count = 0
+		
+		return countiner.innerHTML =
       "<p class=`error-msg`>🤷 Något gick fel vid inladdning av produkterna. </p>";
   }
 }
@@ -122,6 +133,7 @@ async function loadProducts() {
 function createProductCard(product) {
   const element = document.createElement("div");
   element.className = "product-card";
+  element.dataset.id = product._id
 
   const price = product.price
 
@@ -130,11 +142,20 @@ function createProductCard(product) {
     <h3>${product.name}</h3>
 		<h4><i> ${product.brand}</i>, ${product.amount}${product.unit}</h4>
     <p>${price.toFixed(2)} kr</p>
-    <button class="add-to-cart-btn">Lägg i varukorg</button>
+    <div class="spacer"></div>
+    <div class="product-card-controls">
+      <button class="remove-from-cart-btn">-</button>
+      <p class="product-count-${product._id}">0</p>
+      <button class="add-to-cart-btn">+</button>
+    </div>
   `;
 
   element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
     addProductToCart(product);
+  });
+
+  element.querySelector(".remove-from-cart-btn").addEventListener("click", () => {
+    removeProductFromCart(product._id);
   });
 
   return element;

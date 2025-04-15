@@ -44,8 +44,24 @@ export function updateLocalStorageCart(callbackFunction) {
 	For example, the cart count in the header
 */
 export function updateDOMWithCartData() {
+	// fix cart badge
 	const cart = getCartFromLocalStorage()
 	document.querySelector('.cart-count').innerText = cart.length;
+
+	const countProduct = (id) => {
+		return cart.reduce((count, product) => {
+			if (id === product._id) count++
+			return count
+		}, 0)
+	}
+
+	// fix product counts
+	cart.forEach(product => {
+		const productCountP = document.querySelector(`.product-count-${product._id}`)
+		if (!productCountP) return;
+		productCountP.innerText = countProduct(product._id)
+	})
+
 	renderCart()
 }
 
