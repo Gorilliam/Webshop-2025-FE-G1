@@ -2,6 +2,7 @@ import {
   updateDOMWithCartData,
   getAggregatedCart
 } from '../utils/cartFunctions.js'
+import { showWelcomeMessage } from '../utils/api.js';
 import loadHeader from './header.js';
 import loadUserContext from '../utils/userContext.js';
 
@@ -26,6 +27,7 @@ async function checkoutPage() {
   await loadHeader()
   updateDOMWithCartData()
   renderCheckoutForm()
+  showWelcomeMessage()
   document.addEventListener('keyup', e => {
     if (e.ctrlKey && e.key.toLowerCase() === 'm') {
       autofillFormWithTestData()
