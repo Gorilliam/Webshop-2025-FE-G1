@@ -16,7 +16,6 @@ async function productsPage() {
   await loadFooter()
   renderCategoryButtons()
   await loadProducts()
-  showWelcomeMessage()
   updateDOMWithCartData()
 }
 

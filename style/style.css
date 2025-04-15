@@ -13,7 +13,7 @@
 body {
   margin: 0;
   min-width: 320px;
-  height: 100vh;
+  height: 100dvh;
 
   /* So the footer is always at the bottom */
   display: flex;
@@ -192,4 +192,23 @@ body {
 footer p {
   margin: 0;
   font-size: 0.7rem;
+}
+
+@keyframes egg-bloop {
+  0% {
+    transform: scale(0) rotate(90deg);
+  }
+
+  50% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(0) rotate(-90deg);
+  }
+}
+
+.egg {
+  animation-name: egg-bloop;
+  animation-duration: 1s;
 }

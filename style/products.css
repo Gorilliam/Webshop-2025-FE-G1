@@ -1,23 +1,24 @@
-/* TEMPORARILY CALLING ALL IMG BECAUSE NO CLASS/ID ASSIGNED TO PRODUCTS ELEMENTS YET*/
+#main-container, #products-page-main {
+	height: 100%;
+	overflow-y: hidden;
+}
 
 .product-card img {
 	max-width: 160px;
 	max-height: 200px;
 }
 
-.products-page-container {
-	overflow-y: hidden;
-	display: flex;
-	flex-direction: column;
-}
 
 #products-page-main {
-	flex-grow: 1;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 }
 
 #category-buttons {
+	height: 100%;
+	overflow-y: auto;
+	background-color: var(--lite-gray);
+
 	display: flex;
 	flex-direction: column;
 
@@ -41,13 +42,15 @@
 }
 
 #products {
-
+	height: calc(100% - 3rem);
+	overflow-y: auto;
 	padding: 1rem;
 }
 
 /* Products */
 #products {
 	display: grid;
+	align-content: flex-start;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	gap: 1rem;
 }
@@ -62,6 +65,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	/* max-height: 400px; */
 
 	& h3,
 	h4,
