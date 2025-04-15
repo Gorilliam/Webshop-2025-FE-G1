@@ -186,7 +186,6 @@ async function handleCheckout(e) {
     // prevent it from showing again when the user goes back to the cart
     localStorage.setItem("hakim-livs-cart", JSON.stringify([]));
     updateDOMWithCartData(); // This updates cart icon etc.
-    displayError("Tack för din beställning!"); // displayError order confirmation
 
 
 
