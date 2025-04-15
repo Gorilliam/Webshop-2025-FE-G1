@@ -33,6 +33,7 @@ async function checkoutPage() {
   updateDOMWithCartData()
   renderCheckoutForm()
   showWelcomeMessage()
+  loadFormData()
   document.addEventListener('keyup', e => {
     if (e.ctrlKey && e.key.toLowerCase() === 'm') {
       autofillFormWithTestData()
@@ -185,6 +186,7 @@ async function handleCheckout(e) {
     const result = await res.json();
     console.log("Order created successfully:", result);
 
+    saveFormData(form)
 
     // Show the order confirmation modal
     document.getElementById("orderNumber").textContent = result.orderID;
@@ -206,6 +208,22 @@ async function handleCheckout(e) {
   }
 }
 
+function loadFormData() {
+  try {
+    const previous = JSON.parse(localStorage.getItem('hakim-previous-form'))
+    if (!previous) return;
+    form.streetAddress.value = previous.streetAddress
+    form.city.value = previous.city
+    form.postcode.value = previous.postcode
+    form.phoneNumber.value = previous.phoneNumber
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function saveFormData(form) {
+  localStorage.setItem('hakim-previous-form', JSON.stringify(Object.fromEntries(new FormData(form))))
+}
 
 // Function to close the confirmation modal window
 function closeModal() {
