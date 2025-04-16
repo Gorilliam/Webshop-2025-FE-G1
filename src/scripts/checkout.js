@@ -59,7 +59,7 @@ function renderCheckoutForm() {
                 <h4>${product.name}</h4>
                 <p>${product.price.toFixed(2)}:-</p>
                 <p>x${product.quantity}</p>
-                <p>= ${product.total.toFixed(2)}</p>
+                <p>= ${product.total.toFixed(2)}:-</p>
             </div>
         `
   }
