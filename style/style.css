@@ -207,6 +207,41 @@ footer p {
   font-size: 0.7rem;
 }
 
+.notification {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(187, 51, 41);
+  color: white;
+  font-weight: bold;
+  padding: .25rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  z-index: 20000;
+  animation: notification 4.2s;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes notification {
+  0% {
+    transform: scale(0);
+  }
+
+  5% {
+    transform: scale(1);
+  }
+
+  95% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
 @keyframes egg-bloop {
   0% {
     transform: scale(0) rotate(90deg);
