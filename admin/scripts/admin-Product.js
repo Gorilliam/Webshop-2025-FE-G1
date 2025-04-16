@@ -30,11 +30,11 @@ async function loadProductList(updatedProductId = null) {
             <div class="button-group">
               <button class="update-btn" data-id="${product._id}" data-name="${product.name}">
                 <i class="fas fa-edit"></i>
-                Edit
+                Redigera
               </button>
               <button class="delete-btn" data-id="${product._id}" data-name="${product.name}">
                 <i class="fas fa-trash-alt"></i>
-                Delete
+                Ta bort
               </button>
             </div>
           </td>
