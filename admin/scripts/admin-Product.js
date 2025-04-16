@@ -11,7 +11,6 @@ async function loadProductList(updatedProductId = null) {
       // Get the tbody element where rows will be inserted
       const tableBody = document.getElementById('productBody');
       tableBody.innerHTML = ""; // Clear old product list
-  
       // Loop through the products and add each one as a row in the table
       products.forEach(product => {
         const row = document.createElement('tr');
@@ -23,7 +22,7 @@ async function loadProductList(updatedProductId = null) {
           <td>${product.price}</td>
           <td>${product.amount} ${product.unit}</td> 
           <td>${product.brand}</td>
-          <td>${product.discount}</td>
+          <td>${((1 - product.discount) * 100).toFixed(0)}%</td>
           <td>${product.description}</td>
           <td>${product.category.name}</td>
           <td>${product.stock}</td>

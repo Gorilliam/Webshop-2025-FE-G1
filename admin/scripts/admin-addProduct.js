@@ -71,7 +71,7 @@ document.getElementById("productForm").addEventListener("submit", async function
         unit: document.getElementById("productUnit").value,
         amount: parseInt(document.getElementById("productQuantity").value, 10),
         brand: document.getElementById("productBrand").value,
-        discount: parseFloat(document.getElementById("productDiscount").value),
+        discount: 1- (parseFloat(document.getElementById("productDiscount").value)/100), // Converts % input to multiplier
         description: document.getElementById("productDescription").value,
         category: document.getElementById("productCategory").value, // Use category ID
         stock: parseInt(document.getElementById("productStock").value, 10),
@@ -192,7 +192,7 @@ function attachEditListeners() {
                 document.getElementById("productUnit").value = product.unit;
                 document.getElementById("productQuantity").value = product.amount;
                 document.getElementById("productBrand").value = product.brand;
-                document.getElementById("productDiscount").value = product.discount;
+                document.getElementById("productDiscount").value = (1 - product.discount) * 100; // Converting multiplier to %
                 document.getElementById("productDescription").value = product.description;
                 //document.getElementById("productCategory").value = product.category._id; // Use category ID
                 document.getElementById("productStock").value = product.stock;

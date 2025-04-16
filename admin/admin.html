@@ -29,47 +29,46 @@
             <h2 class="logo">Admin Panel</h2>
             <ul class="nav-links">
                 <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-box"></i> Products</a></li>
-                <li><a href="#"><i class="fas fa-shopping-cart"></i> Orders</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Produkter</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Ordrar</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Kunder</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Inställningar</a></li>
             </ul>
         </aside>
         
         <main class="content">
-            <h2 class="content-header">Product-Management (main-version)</h2>
+            <h2 class="content-header">Produkthantering</h2>
             <div class="products-header">
-                <h3>Add, edit, remove and list products here</h3>
+                <h3>Lägg till, ändra, ta bort och lista produkter här</h3>
                 
             </div>
             
             <div class="products-filters">
                 <select class="category-filter">
-                    <option value="">All Categories</option>
-                    <option value="Fruits">Fruits</option>
-                    <option value="Dairy">Dairy</option>
+                    <option value="">Alla kategorier</option>
+                    <option value="Fruits">Ej implementerad</option>
                 </select>
                 <input type="text" placeholder="Search products..." class="search-box">
                 
-                <button class="add-product-btn btn btn-primary" id="addProductBtn" class="btn btn-primary"> + Add New Product</button>
+                <button class="add-product-btn btn btn-primary" id="addProductBtn" class="btn btn-primary"> + Lägg till ny produkt</button>
                 <div id="productFormContainer">
                     <div class="product-form">
                         <div class="form-header">
-                            <h2>Manage Product</h2>
+                            <h2>Hantera produkt</h2>
                             <button id="cancelFormBtn">X</button>
                         </div>
                 
                         <form id="productForm">
                             <label>Image URL</label>
-                            <input type="text" id="productImage" placeholder="Enter Image URL">
+                            <input type="text" id="productImage" placeholder="Välj Image URL">
                 
-                            <label>Product Name</label>
-                            <input type="text" id="productName" placeholder="Enter Product Name">
+                            <label>Produktnamn</label>
+                            <input type="text" id="productName" placeholder="Ange produktnamn" required>
                 
-                            <label>Price (kr)</label>
-                            <input type="number" id="productPrice" placeholder="Enter Price" step="0.01">
+                            <label>Pris (kr)</label>
+                            <input type="number" id="productPrice" placeholder="Ange pris" step="0.01" required>
                 
-                            <label for="productUnit">Unit of Measurement:</label>
+                            <label for="productUnit">Enhet</label>
                             <select id="productUnit" name="productUnit" required>
                                 <option value="kg">kg</option>
                                 <option value="mg">mg</option>
@@ -80,36 +79,36 @@
                                 <option value="st">st</option>
                             </select>
 
-                            <label for="productQuantity">Quantity/Unit:</label>
-                            <input type="number" id="productQuantity" name="productQuantity" min="1" required>
+                            <label for="productQuantity">Mängd av enhet</label>
+                            <input type="number" id="productQuantity" name="productQuantity" min="1" placeholder="Ange mängd av enhet" required>
 
-                            <label>Brand</label>
-                            <input type="text" id="productBrand" placeholder="Enter Brand Name">
+                            <label>Tillverkare</label>
+                            <input type="text" id="productBrand" placeholder="Ange produktens tillverkare">
                 
-                            <label>Discount (Multiplier, 1 = no discount)</label>
+                            <label>Rabatt (%) <div class="info-icon" data-tooltip="">i</div></label>
                             <input 
                                 type="number"   
                                 id="productDiscount"  
-                                placeholder="e.g. 0.4 for 60%"
-                                step="0.01" min="0" max="1"
-                                value="1">
+                                step="0.1" min="0" max="100"
+                                value="1"
+                                placeholder="Ange rabatt i %">
                                 
                 
-                            <label>Description</label>
-                            <textarea id="productDescription" placeholder="Enter Product Description"></textarea>
+                            <label>Produktbeskrivning</label>
+                            <textarea id="productDescription" placeholder="Ange produktbeskrivning"></textarea>
                 
-                            <label>Category</label>
+                            <label>Kategori</label>
                             <select id="productCategory">
-                                <option>Loading categories...</option>
+                                <option>Laddar kategorier...</option>
                             </select>
 
                 
-                            <label>Stock</label>
-                            <input type="number" id="productStock" placeholder="Enter Stock Quantity">
+                            <label>Lagersaldo</label>
+                            <input type="number" id="productStock" placeholder="Ange lagersaldo">
                             <div class="buttons-container">
                             <!-- Submit & Cancel Buttons -->
-                                <button type="submit" class="save-btn">Save Product</button>
-                                <button type="button" id="cancelFormBtnBottom" class="cancel-btn">Cancel</button>
+                                <button type="submit" class="save-btn">Spara produkt</button>
+                                <button type="button" id="cancelFormBtnBottom" class="cancel-btn">Avbryt</button>
                             </div>
                         </form>
                     </div>
@@ -120,15 +119,15 @@
                 <table class="products-table">
                     <thead>
                       <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Pack Size</th>
-                        <th>Brand</th>
-                        <th>Discount</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Stock</th>
+                        <th>Bild</th>
+                        <th>Produktnamn</th>
+                        <th>Pris</th>
+                        <th>Mängd/enhet</th>
+                        <th>Tillverkare</th>
+                        <th>Rabatt</th>
+                        <th>Produktbeskrivning</th>
+                        <th>Kategori</th>
+                        <th>Lagersaldo</th>
                       </tr>
                     </thead>
                     <tbody id="productBody">
