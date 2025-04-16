@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 :root {
   color: #333;
@@ -10,11 +10,17 @@
   --lite-grey: var(--lite-gray);
 }
 
-body, button, input, textarea, select, option {
+body,
+button,
+input,
+textarea,
+select,
+option {
   font-family: Quicksand, Arial, sans-serif;
 }
 
-html, body {
+html,
+body {
   max-width: 100dvw;
   overflow-x: hidden;
 }
@@ -34,7 +40,6 @@ body {
   }
 }
 
-
 /* Header */
 .site-header {
   background-image: linear-gradient(90deg, var(--lite-gray), var(--lite-green));
@@ -46,12 +51,12 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.logo{
+.logo {
   max-width: 160px;
   max-height: 200px;
   margin-left: 0.6rem;
 }
-.logo-container{
+.logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +91,7 @@ body {
   color: white;
   width: 18px;
   height: 18px;
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,11 +100,10 @@ body {
 
 /* Main Content */
 .main-content {
-  padding: 2rem;
-  max-width: 800px;
+  /* padding: 2rem; */
+  max-width: 60rem;
   margin: auto;
 }
-
 
 /* Login */
 .login-form {
@@ -136,14 +140,13 @@ body {
   text-decoration: none;
   color: black;
 }
- 
+
 #welcomeMessage {
-  
   font-size: 1.2rem;
   font-style: italic;
   color: rgb(187, 4, 4);
   font-weight: 700;
-  
+
   margin-top: 2rem;
 }
 
@@ -190,7 +193,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
   text-align: center;
-  padding: .5rem;
+  padding: 0.5rem;
   user-select: none;
   cursor: pointer;
 }
