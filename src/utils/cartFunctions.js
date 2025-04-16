@@ -15,7 +15,7 @@ export function addProductToCart(product) {
 	updateLocalStorageCart(function(cart) {
 		const currentQuantity = cart.filter(p => p._id === product._id).length;
 		if (currentQuantity >= product.stock) {
-			cartNotification(`Ingen kvar på lagret!`)
+			cartNotification(`Inga kvar på lagret!`)
 			return cart
 		}
 		cart.push(product)

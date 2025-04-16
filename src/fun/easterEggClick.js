@@ -36,7 +36,8 @@ const handleEggClick = (e) => {
         [0, FULL],
         [-HALF, HALF],
         [0, -FULL],
-        [-HALF, -HALF]
+        [-HALF, -HALF],
+        [-FULL, 0]
     ]
 
     for (let i = 0; i < coords.length; i++) {
