@@ -140,6 +140,34 @@
 }
 
 .moms {
-  font-size: 0.7rem;
-  font-style: italic;
+	font-size: 0.7rem;
+	font-style: italic;
+}
+
+#pagination {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	gap: 1rem;
+	user-select: none;
+
+	& > * {
+		display: flex;
+		justify-content: center;
+	}
+
+	& button {
+		background-color: var(--dark-green);
+		padding: .25rem;
+		border-radius: 5px;
+
+		&:hover {
+			background-color: rgb(53, 53, 53) !important;
+		}
+
+		& img {
+			display: block !important;
+			width: 25px;
+		}
+	}
 }
