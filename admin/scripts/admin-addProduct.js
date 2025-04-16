@@ -85,7 +85,11 @@ document.getElementById("productForm").addEventListener("submit", async function
             console.log("Editing product:", productId, productData.name); // Debugging log
             // If editing, send PUT request to update product
             response = await axios.put(
-                `https://webshop-2025-be-g1-blush.vercel.app/api/products/${productId}`, productData);
+                `https://webshop-2025-be-g1-blush.vercel.app/api/products/${productId}`, productData, {
+                    headers: {
+                        'hakim-livs-token': localStorage.getItem('hakim-livs-token')
+                    }
+                });
             console.log("Editing Product Response:", response); // Debugging log
         } else {    
             // If adding new product, send POST request
