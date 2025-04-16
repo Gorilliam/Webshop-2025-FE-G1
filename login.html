@@ -4,65 +4,127 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Hakim Livs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/style/login.css" >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style/login.css" />
+    <link rel="stylesheet" href="style//style.css" />
   </head>
   <body>
-    
-     <!-- Login Popup Form -->
-     <div id="loginPopup" class="login-popup">
-        <div class="modal-content">
-            <div id="loginFormWrapper">
-                <span class="close">&times;</span>
-                <h2>VÄLKOMMEN!</h2>
-                <p>Logga in för att få ut mer av din shopping!</p>
-                <form id="loginForm">
-                  <div class="input-container">
-                    <input type="email" maxlength="100" id="username" placeholder="E-postadress" required />
-                  </div>
-                  <div class="password-container">
-                    <input type="password" maxlength="100" id="password" placeholder="Password" required />
-                    <i class="fas fa-eye" id="togglePassword"></i>
-                  </div>
-                  <button type="submit" id="loginBtn">Logga in</button>
-                </form>
+    <!-- Login Popup Form -->
+    <div id="loginPopup" class="login-popup">
+      <div class="modal-content">
+        <div class="greetings-content">
+          <h2>Kom med oss!</h2>
+          <p>
+            We are so excited to have you here! Lorem ipsum, dolor sit amet
+            consectetur adipisicing elit. Explicabo, nemo.
+          </p>
+          <!-- <div class="separator"></div> -->
+          <p>Ny hos Hakim Livs?</p>
+          <button id="createAccountBtn">Skapa konto</button>
+        </div>
+        <div id="loginFormWrapper">
+          <span class="close">&times;</span>
+          <h2>VÄLKOMMEN!</h2>
+          <p>Logga in för att få ut mer av din shopping!</p>
+          <form id="loginForm">
+            <div class="input-container">
+              <input
+                type="email"
+                maxlength="100"
+                id="username"
+                placeholder="E-postadress"
+                required
+              />
+            </div>
+            <div class="password-container">
+              <input
+                type="password"
+                maxlength="100"
+                id="password"
+                placeholder="Password"
+                required
+              />
+              <i class="fas fa-eye" id="togglePassword"></i>
+            </div>
+            <button type="submit" id="loginBtn">Logga in</button>
+            <div class="error-message"></div>
+          </form>
 
-                <div class="separator"></div>
+          <!-- <div class="separator"></div> -->
 
-                <div>Ny hos Hakim Livs?</div>
-                <button id="createAccountBtn">Skapa konto</button>
-            </div> <!--end of login form wrapper-->
-        
-           <!-- Registration Popup Form (Moved Outside) -->
-            <div id="registerFormWrapper" style="display: none;">
-              <span class="close">&times;</span>
-              <h2>SKAPA KONTO</h2>
-              <p>Fyll i din information nedan för att skapa ett konto.</p>
-              <form id="registerForm">
-                <div class="input-container">
-                  <input type="text" maxlength="100" id="registerFirstName" placeholder="Förnamn" required />
-                </div>
-                <div class="input-container">
-                  <input type="text" maxlength="100" id="registerLastName" placeholder="Efternamn" required />
-                </div>
-                <div class="input-container">
-                  <input type="email" maxlength="100" id="registerEmail" placeholder="E-postadress" required />
-                </div>
-                <div class="password-container">
-                  <input type="password" maxlength="100" minlength ="8" id="registerPassword" placeholder="Lösenord" required />
-                  <i class="fas fa-eye" id="toggleRegisterPassword"></i>
-                </div>
-                <div class="password-container">
-                  <input type="password" maxlength="100" minlength ="8" id="confirmPassword" placeholder="Bekräfta lösenord" required />
-                  <i class="fas fa-eye" id="toggleConfirmPassword"></i>
-                </div>
-                <button type="submit" id="registerBtn">Skapa kontot!</button>
-              </form>
-              <p><a href="#" id="backToLogin">Tillbaka till inloggning</a></p>
-            </div> <!--end of register form wrapper-->
-        </div> <!--end of modal content-->
-     </div> <!--end of login popup-->
-          <!-- PAGE-SPECIFIC JAVASCRIPT -->
+          <!-- <div>Ny hos Hakim Livs?</div> -->
+          <!-- <button id="createAccountBtn">Skapa konto</button> -->
+        </div>
+        <!--end of login form wrapper-->
+
+        <!-- Registration Popup Form (Moved Outside) -->
+        <div id="registerFormWrapper" style="display: none">
+          <span class="close">&times;</span>
+          <h2>SKAPA KONTO</h2>
+          <p>Fyll i din information nedan för att skapa ett konto.</p>
+          <form id="registerForm">
+            <div class="input-container">
+              <input
+                type="text"
+                maxlength="100"
+                id="registerFirstName"
+                placeholder="Förnamn"
+                required
+              />
+            </div>
+            <div class="input-container">
+              <input
+                type="text"
+                maxlength="100"
+                id="registerLastName"
+                placeholder="Efternamn"
+                required
+              />
+            </div>
+            <div class="input-container">
+              <input
+                type="email"
+                maxlength="100"
+                id="registerEmail"
+                placeholder="E-postadress"
+                required
+              />
+            </div>
+            <div class="password-container">
+              <input
+                type="password"
+                maxlength="100"
+                minlength="8"
+                id="registerPassword"
+                placeholder="Lösenord"
+                required
+              />
+              <i class="fas fa-eye" id="toggleRegisterPassword"></i>
+            </div>
+            <div class="password-container">
+              <input
+                type="password"
+                maxlength="100"
+                minlength="8"
+                id="confirmPassword"
+                placeholder="Bekräfta lösenord"
+                required
+              />
+              <i class="fas fa-eye" id="toggleConfirmPassword"></i>
+            </div>
+            <button type="submit" id="registerBtn">Skapa kontot!</button>
+          </form>
+          <p><a href="#" id="backToLogin">Tillbaka till inloggning</a></p>
+        </div>
+        <!--end of register form wrapper-->
+      </div>
+      <!--end of modal content-->
+    </div>
+    <!--end of login popup-->
+    <!-- PAGE-SPECIFIC JAVASCRIPT -->
     <script type="module" src="./src/scripts/login.js"></script>
   </body>
 </html>
