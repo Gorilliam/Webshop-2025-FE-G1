@@ -71,7 +71,7 @@ document.getElementById("productForm").addEventListener("submit", async function
         unit: document.getElementById("productUnit").value,
         amount: parseInt(document.getElementById("productQuantity").value, 10),
         brand: document.getElementById("productBrand").value,
-        discount: parseFloat(document.getElementById("productDiscount").value),
+        discount: 1- (parseFloat(document.getElementById("productDiscount").value)/100), // Converts % input to multiplier
         description: document.getElementById("productDescription").value,
         category: document.getElementById("productCategory").value, // Use category ID
         stock: parseInt(document.getElementById("productStock").value, 10),
@@ -85,11 +85,19 @@ document.getElementById("productForm").addEventListener("submit", async function
             console.log("Editing product:", productId, productData.name); // Debugging log
             // If editing, send PUT request to update product
             response = await axios.put(
-                `https://webshop-2025-be-g1-blush.vercel.app/api/products/${productId}`, productData);
+                `https://webshop-2025-be-g1-blush.vercel.app/api/products/${productId}`, productData, {
+                    headers: {
+                        'hakim-livs-token': localStorage.getItem('hakim-livs-token')
+                    }
+                });
             console.log("Editing Product Response:", response); // Debugging log
         } else {    
             // If adding new product, send POST request
-         response = await axios.post("https://webshop-2025-be-g1-blush.vercel.app/api/products", productData);
+         response = await axios.post("https://webshop-2025-be-g1-blush.vercel.app/api/products", productData, {
+            headers: {
+                'hakim-livs-token': localStorage.getItem('hakim-livs-token')
+            }
+         });
 
         console.log("Response:", response); // Log API response
         }
@@ -126,7 +134,10 @@ async function deleteProduct(productId, productName) {
 
     try {
         const response = await axios.delete("https://webshop-2025-be-g1-blush.vercel.app/api/products", {
-            data: { id: productId } // Send product ID in the request body
+            data: { id: productId }, // Send product ID in the request body
+            headers: {
+                'hakim-livs-token': localStorage.getItem('hakim-livs-token')
+            }
         });
 
         if (response.status === 200) {
@@ -192,7 +203,7 @@ function attachEditListeners() {
                 document.getElementById("productUnit").value = product.unit;
                 document.getElementById("productQuantity").value = product.amount;
                 document.getElementById("productBrand").value = product.brand;
-                document.getElementById("productDiscount").value = product.discount;
+                document.getElementById("productDiscount").value = (1 - product.discount) * 100; // Converting multiplier to %
                 document.getElementById("productDescription").value = product.description;
                 //document.getElementById("productCategory").value = product.category._id; // Use category ID
                 document.getElementById("productStock").value = product.stock;
