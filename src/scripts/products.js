@@ -153,9 +153,11 @@ async function updateProducts(categoryName, btn) {
 
 // Function to create an individual product card
 function createProductCard(product) {
+  console.log(product)
   const element = document.createElement("div");
   element.className = "product-card";
   element.dataset.id = product._id
+  if (product.stock <= 0) element.classList.add('sold-out')
 
   const price = product.price
 
@@ -165,19 +167,23 @@ function createProductCard(product) {
 		<h4><i> ${product.brand}</i>, ${product.amount}${product.unit}</h4>
     <p>${price.toFixed(2)} kr</p>
     <div class="spacer"></div>
-    <div class="product-card-controls">
-      <button class="remove-from-cart-btn">-</button>
-      <p class="product-count-${product._id}">0</p>
-      <button class="add-to-cart-btn">+</button>
-    </div>
+    ${product.stock ? `
+      <div class="product-card-controls">
+        <button class="remove-from-cart-btn">-</button>
+        <p class="product-count-${product._id}">0</p>
+        <button class="add-to-cart-btn">+</button>
+      </div>
+    `:`
+      <div class="sold-out">SLUTSÅLD</div>
+    `}
   `;
 
-  element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+  element.querySelector(".add-to-cart-btn")?.addEventListener("click", () => {
     addProductToCart(product);
     updateDOMWithCartData()
   });
 
-  element.querySelector(".remove-from-cart-btn").addEventListener("click", () => {
+  element.querySelector(".remove-from-cart-btn")?.addEventListener("click", () => {
     removeProductFromCart(product._id);
     updateDOMWithCartData()
   });

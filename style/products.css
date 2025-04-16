@@ -102,6 +102,13 @@
   p {
     margin: 0.25rem;
   }
+
+  &.sold-out {
+    filter: grayscale(1);
+    opacity: 0.75;
+    border-style: dashed;
+    border-width: 2px;
+  }
 }
 
 .spacer {
