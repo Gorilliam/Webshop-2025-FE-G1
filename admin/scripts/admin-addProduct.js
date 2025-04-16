@@ -89,7 +89,11 @@ document.getElementById("productForm").addEventListener("submit", async function
             console.log("Editing Product Response:", response); // Debugging log
         } else {    
             // If adding new product, send POST request
-         response = await axios.post("https://webshop-2025-be-g1-blush.vercel.app/api/products", productData);
+         response = await axios.post("https://webshop-2025-be-g1-blush.vercel.app/api/products", productData, {
+            headers: {
+                'hakim-livs-token': localStorage.getItem('hakim-livs-token')
+            }
+         });
 
         console.log("Response:", response); // Log API response
         }
@@ -126,7 +130,10 @@ async function deleteProduct(productId, productName) {
 
     try {
         const response = await axios.delete("https://webshop-2025-be-g1-blush.vercel.app/api/products", {
-            data: { id: productId } // Send product ID in the request body
+            data: { id: productId }, // Send product ID in the request body
+            headers: {
+                'hakim-livs-token': localStorage.getItem('hakim-livs-token')
+            }
         });
 
         if (response.status === 200) {
