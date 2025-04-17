@@ -101,8 +101,8 @@ body {
 /* Main Content */
 .main-content {
   /* padding: 2rem; */
-  max-width: 60rem;
-  margin: auto;
+  max-width: 80rem;
+  margin: 0 auto;
 }
 
 /* Login */
