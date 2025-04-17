@@ -225,4 +225,5 @@ function renderPagination() {
 function turnPage(by) {
   page += by
   updateProducts(selectedCategory)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
