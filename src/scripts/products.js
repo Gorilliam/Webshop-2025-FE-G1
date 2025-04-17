@@ -9,7 +9,7 @@ import {
 } from "../utils/cartFunctions.js";
 
 // CONSTANTS
-const PER_PAGE = 10
+const PER_PAGE = 20
 
 // DOM
 const productsContainer = document.getElementById("products");
@@ -196,7 +196,7 @@ function renderPagination() {
   const filteredProducts = getFilteredProducts()
   const pageCount = Math.ceil(filteredProducts.length/PER_PAGE)
   if (pageCount < 1) return;
-  categoryContainer.insertAdjacentHTML('beforeend', `
+  productsContainer.insertAdjacentHTML('beforeend', `
     <div id="pagination">
       <div>
         ${page <= 1 ? "":`
