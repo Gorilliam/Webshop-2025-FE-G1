@@ -113,7 +113,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /*max-height: 85%;*/ /* Adjust this height according to your needs */
+  max-height: 85%; /* Adjust this height according to your needs */
   overflow-y: auto; /* Enables vertical scrolling */
 }
   
