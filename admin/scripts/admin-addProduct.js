@@ -67,7 +67,10 @@ document.getElementById("productForm").addEventListener("submit", async function
     const discountInput = document.getElementById('productDiscount');
 
     discountInput.addEventListener('blur', () => {
-        if (discountInput.value === '') {
+        const val = parseFloat(discountInput.value);
+        
+        // If value is empty, NaN, or less than 0, default to 0
+        if (isNaN(val) || discountInput.value.trim() === '') {
             discountInput.value = 0;
         }
     });
