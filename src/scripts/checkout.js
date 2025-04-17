@@ -155,7 +155,7 @@ async function handleCheckout(e) {
     lastName: form.lastName.value.trim(),
     email: form.email.value.trim(),
     phoneNumber: form.phoneNumber.value.trim(),
-    address: `${form.streetAddress.value.trim()}, ${form.city.value.trim()} ${form.postcode.value.trim()}`,
+    address: `${form.streetAddress.value.trim()} ${form.city.value.trim()} ${form.postcode.value.trim()}`,
     products: products.map((p) => ({
       productId: p._id,
       quantity: p.quantity,
