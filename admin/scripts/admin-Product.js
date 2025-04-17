@@ -19,10 +19,10 @@ async function loadProductList(updatedProductId = null) {
         row.innerHTML = `
           <td><img src="${product.image}" alt="${product.name}" width="50" height="50"></td>
           <td>${product.name}</td>
-          <td>${product.price}</td>
+          <td>${(product.price).toFixed(2)}:-</td>
           <td>${product.amount} ${product.unit}</td> 
           <td>${product.brand}</td>
-          <td>${((1 - product.discount) * 100).toFixed(0)}%</td>
+          <td>${((1 - product.discount) * 100).toFixed(2)}%</td>
           <td>${product.description}</td>
           <td>${product.category.name}</td>
           <td>${product.stock}</td>
