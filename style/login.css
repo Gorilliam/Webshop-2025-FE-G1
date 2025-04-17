@@ -172,6 +172,7 @@ button:hover {
 #createAccountBtn {
   background: var(--lite-gray);
   color: black;
+  margin-top: 47px
 }
 
 #createAccountBtn:hover {
