@@ -63,18 +63,6 @@ document.getElementById("productForm").addEventListener("submit", async function
     // Get product ID from the hidden field (if editing)
     const productId = document.getElementById("productForm").getAttribute("data-id");
 
-    // To prevent discount defaulting to 100%
-    const discountInput = document.getElementById('productDiscount');
-
-    discountInput.addEventListener('blur', () => {
-        const val = parseFloat(discountInput.value);
-        
-        // If value is empty, NaN, or less than 0, default to 0
-        if (isNaN(val) || discountInput.value.trim() === '') {
-            discountInput.value = 0;
-        }
-    });
-
     // Collect form data
     const productData = {
         image: document.getElementById("productImage").value,
