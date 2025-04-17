@@ -225,5 +225,8 @@ function renderPagination() {
 function turnPage(by) {
   page += by
   updateProducts(selectedCategory)
+  //Scroll to top when clicking PC and mobile
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  document.body.scrollTo({ top: 0, behavior: 'smooth' });
 }
