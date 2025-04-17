@@ -25,7 +25,7 @@
       });
   });
   
-
+  
 
 //javascript for save product form to database
 
@@ -63,13 +63,22 @@ document.getElementById("productForm").addEventListener("submit", async function
     // Get product ID from the hidden field (if editing)
     const productId = document.getElementById("productForm").getAttribute("data-id");
 
+    // To prevent discount defaulting to 100%
+    const discountInput = document.getElementById('productDiscount');
+
+    discountInput.addEventListener('blur', () => {
+        if (discountInput.value === '') {
+            discountInput.value = 0;
+        }
+    });
+
     // Collect form data
     const productData = {
         image: document.getElementById("productImage").value,
         name: document.getElementById("productName").value,
         price: parseFloat(document.getElementById("productPrice").value, 10),
         unit: document.getElementById("productUnit").value,
-        amount: parseInt(document.getElementById("productQuantity").value, 10),
+        amount: parseFloat(document.getElementById("productQuantity").value, 10),
         brand: document.getElementById("productBrand").value,
         discount: 1- (parseFloat(document.getElementById("productDiscount").value)/100), // Converts % input to multiplier
         description: document.getElementById("productDescription").value,
@@ -203,7 +212,7 @@ function attachEditListeners() {
                 document.getElementById("productUnit").value = product.unit;
                 document.getElementById("productQuantity").value = product.amount;
                 document.getElementById("productBrand").value = product.brand;
-                document.getElementById("productDiscount").value = (1 - product.discount) * 100; // Converting multiplier to %
+                document.getElementById("productDiscount").value = ((1 - product.discount) * 100).toFixed(2); // Converting multiplier to %
                 document.getElementById("productDescription").value = product.description;
                 //document.getElementById("productCategory").value = product.category._id; // Use category ID
                 document.getElementById("productStock").value = product.stock;
