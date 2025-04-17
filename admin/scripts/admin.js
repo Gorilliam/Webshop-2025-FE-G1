@@ -1,3 +1,4 @@
+import loadComponent from '../../components/loadComponent.js'
 import loadUserContext from "../../src/utils/userContext.js"
 
 const adminLoadingDiv = document.querySelector('.admin-loading')
@@ -9,6 +10,7 @@ main()
 async function main() {
     await loadUserContext()
     await checkToken()
+    await loadComponent('aside', 'adminSidebar')
 }
 
 

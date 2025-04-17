@@ -5,78 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs</title>
     <link rel="stylesheet" href="/style/style.css" />
-    <link rel="stylesheet" href="/style/checkout.css">
+    <link rel="stylesheet" href="/style/checkout.css" />
 
-    <script type="module"  defer src="./src/scripts/checkout.js"></script>
+    <script type="module" defer src="./src/scripts/checkout.js"></script>
   </head>
   <body>
-
     <header class="site-header">
       <!-- rendered by js. see components/header.html -->
     </header>
 
-
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      <h1>Beställ</h1>
-      <p id="welcomeMessage"></p>
-      <div id="loggedOut"></div>
+      <div style="display: flex; flex-direction: column">
+        <h1 style="text-align: center">Kontakt & adress</h1>
+        <p style="text-align: center">
+          Vi kommer att använda kontaktinformation för alla meddelanden gällande
+          leverans.
+        </p>
+        <div class="order-container">
+          <div class="order-information">
+            <h1>Beställ</h1>
+            <p id="welcomeMessage"></p>
+            <div id="loggedOut"></div>
 
-      <!-- ATTN developers: Press CTRL+m in your browser to autofill the form data with test data -->
+            <!-- ATTN developers: Press CTRL+m in your browser to autofill the form data with test data -->
 
-      <form>
-        <div class="mini-cart-container"></div>
-        <a href="/cart.html">Redigera korg</a>
-        <br><br>
+            <div class="mini-cart-container"></div>
+            <a href="/cart.html">Redigera korg</a>
+          </div>
 
-        <label>
-            <span>Förnamn</span>
-            <input maxlength="100" minlength="1" type="text" name="firstName">
-        </label>
-        <label>
-            <span>Efternamn</span>
-            <input maxlength="100" minlength="1"type="text" name="lastName">
-        </label>
-        <label>
-            <span>Email</span>
-            <input maxlength="100" minlength="4" type="text" name="email">
-        </label>
-        <label>
-            <span>Gatuadress</span>
-            <input maxlength="100" minlength="3" mintype="text" name="streetAddress">
-        </label>
-        <label>
-            <span>Postort</span>
-            <input maxlength="100" minlength="1"type="text" name="city">
-        </label>
-        <label>
-            <span>Postnummer</span>
-            <input maxlength="5" minlength="5" type="text" name="postcode">
-        </label>
-        <label>
-            <span>Telefonnummer</span>
-            <input maxlength="100" minlength="4" type="text" name="phoneNumber">
-        </label>
-        <button id="order-button">
-            Beställ
-        </button>
-        <span class="form-error"></span>
-      </form>
+          <form style="margin-top: 2rem; width: 75%">
+            <h3>Kontakt information</h3>
+            <div class="input-wrapper">
+              <input
+                id="phoneNumber"
+                maxlength="100"
+                minlength="4"
+                type="text"
+                name="phoneNumber"
+                required
+                placeholder=" "
+              />
+              <label for="phoneNumber">Telefonnummer</label>
+            </div>
+
+            <div class="input-wrapper">
+              <input
+                id="email"
+                maxlength="100"
+                minlength="4"
+                type="text"
+                name="email"
+                required
+                placeholder=" "
+              />
+              <label for="email">Email</label>
+            </div>
+
+            <h3>Leveransadressen</h3>
+            <div class="input-wrapper">
+              <input
+                id="firstName"
+                maxlength="100"
+                minlength="1"
+                type="text"
+                name="firstName"
+                required
+                placeholder=" "
+              />
+              <label for="firstName">Förnamn</label>
+            </div>
+            <div class="input-wrapper">
+              <input
+                id="lastName"
+                maxlength="100"
+                minlength="1"
+                type="text"
+                name="lastName"
+                required
+                placeholder=" "
+              />
+              <label for="lastName">Efternamn</label>
+            </div>
+
+            <div class="input-wrapper">
+              <input
+                id="streetAddress"
+                maxlength="100"
+                minlength="3"
+                type="text"
+                name="streetAddress"
+                required
+                placeholder=" "
+              />
+              <label for="streetAddress">Gatuadress</label>
+            </div>
+            <div class="input-wrapper">
+              <input
+                id="city"
+                maxlength="100"
+                minlength="1"
+                type="text"
+                name="city"
+                required
+                placeholder=" "
+              />
+              <label for="city">Postort</label>
+            </div>
+            <div class="input-wrapper">
+              <input
+                id="postcode"
+                maxlength="5"
+                minlength="5"
+                type="text"
+                name="postcode"
+                required
+                placeholder=" "
+              />
+              <label for="postcode">Postnummer</label>
+            </div>
+
+            <button id="order-button">Beställ</button>
+            <span class="form-error"></span>
+          </form>
+        </div>
+
+        <!-- <br /><br /> -->
+      </div>
     </main>
-        <!-- Order confirmation modal -->
+    <!-- Order confirmation modal -->
     <div id="orderConfirmationModal" class="modal">
       <div class="modal-content">
-          <span class="close-button" id="closeModal">&times;</span>
-          <h2>Tack för ditt köp!</h2>
-          <p>Ordernummer: <span id="orderNumber"></span></p>
-          <p>Ordern har skickats till <span id="userEmail"></span></p>
-          <button id="goToIndex">Gå till startsidan</button>
+        <span class="close-button" id="closeModal">&times;</span>
+        <h2>Tack för ditt köp!</h2>
+        <p>Ordernummer: <span id="orderNumber"></span></p>
+        <p>Ordern har skickats till <span id="userEmail"></span></p>
+        <button id="goToIndex">Gå till startsidan</button>
       </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="site-footer"></footer>
-
-
   </body>
 </html>

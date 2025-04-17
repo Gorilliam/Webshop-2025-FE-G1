@@ -1,0 +1,10 @@
+tbody button {
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+#manage-order-modal-table {
+    & th, td {
+        padding: .5rem;
+    }
+}

@@ -1,5 +1,23 @@
+export function cartNotification(msg) {
+	const existingNotification = document.querySelector('.notification')
+	existingNotification?.remove()
+
+	const notification = document.createElement('div')
+	notification.classList.add('notification')
+	notification.innerText = msg
+	document.body.insertAdjacentElement('beforeend', notification)
+	setTimeout(() => {
+		notification.remove()
+	}, 4000);
+}
+
 export function addProductToCart(product) {
 	updateLocalStorageCart(function(cart) {
+		const currentQuantity = cart.filter(p => p._id === product._id).length;
+		if (currentQuantity >= product.stock) {
+			cartNotification(`Inga kvar på lagret!`)
+			return cart
+		}
 		cart.push(product)
 		return cart
 	})

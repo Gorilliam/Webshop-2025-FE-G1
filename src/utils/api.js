@@ -5,7 +5,10 @@ export function getBaseUrl() {
   // return "http://localhost:3000/";
 }
 
+let fetchedProducts
 export async function fetchProducts(categoryName = null) {
+  if (fetchedProducts) return fetchedProducts;
+
   let endpoint = "api/products";
   if (categoryName) {
     endpoint += `?category=${encodeURIComponent(categoryName)}`;
@@ -14,7 +17,8 @@ export async function fetchProducts(categoryName = null) {
   const url = `${getBaseUrl()}${endpoint}`;
   const response = await fetch(url);
   if (response.ok) {
-    return await response.json();
+    fetchedProducts = await response.json();
+    return fetchedProducts
   }
   return [];
 }

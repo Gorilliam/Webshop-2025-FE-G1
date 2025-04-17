@@ -23,21 +23,16 @@ const bloopRandomEgg = (x, y) => {
 }
 
 const handleEggClick = (e) => {
-    const FULL = 50
-    const HALF = 25
-    // Starting from 12:00 and going clockwise
-    // Relative to position where clicked
-    // Basically a circle of the 8 compass directions
-    const coords = [
-        [0, -FULL],
-        [HALF, -HALF],
-        [FULL, 0],
-        [HALF, HALF],
-        [0, FULL],
-        [-HALF, HALF],
-        [0, -FULL],
-        [-HALF, -HALF]
-    ]
+    const RADIUS = 50;
+    const POINTS = 16;
+    const coords = [];
+
+    for (let i = 0; i < POINTS; i++) {
+        const angle = (i / POINTS) * Math.PI * 2;
+        const x = Math.round(Math.cos(angle) * RADIUS);
+        const y = Math.round(Math.sin(angle) * RADIUS);
+        coords.push([x, y]);
+    }
 
     for (let i = 0; i < coords.length; i++) {
         const [xOffset, yOffset] = coords[i]
