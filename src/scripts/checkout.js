@@ -55,10 +55,14 @@ function renderCheckoutForm() {
     miniCartContainer.innerHTML += `
             <div class="product">
                 <h4>${product.name}</h4>
-                <p>${product.price.toFixed(2)}:-</p>
-                <p>x${product.quantity}</p>
-                <p>= ${product.total.toFixed(2)}:-</p>
-            </div>
+                <div class="product-numbers">
+                  <p>${product.price.toFixed(2)}:-</p>
+                  <p>x${product.quantity}</p>
+                  <p style="font-weight: 900">= ${product.total.toFixed(
+                    2
+                  )}:-</p>
+                </div>
+              </div>
         `;
   }
 
@@ -155,7 +159,7 @@ async function handleCheckout(e) {
     lastName: form.lastName.value.trim(),
     email: form.email.value.trim(),
     phoneNumber: form.phoneNumber.value.trim(),
-    address: `${form.streetAddress.value.trim()}, ${form.city.value.trim()} ${form.postcode.value.trim()}`,
+    address: `${form.streetAddress.value.trim()} ${form.city.value.trim()} ${form.postcode.value.trim()}`,
     products: products.map((p) => ({
       productId: p._id,
       quantity: p.quantity,
