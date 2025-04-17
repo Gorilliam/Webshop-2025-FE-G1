@@ -301,4 +301,13 @@ form {
     justify-content: center;
     align-items: center;
   }
+  form {
+    width: 50%;
+    margin-left: -40%
+  }
+  input {
+    position: relative;
+    margin-bottom: 2rem;
+    max-width: 330px;
+  }
 }
