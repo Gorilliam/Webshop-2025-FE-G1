@@ -220,7 +220,7 @@ registerForm.addEventListener("submit", async (e) => {
     console.log(data);
 
     if (!response.ok) {
-      alert(`Fel vid registrering: ${data.message || response.statusText}`);
+      alert(`Fel vid registrering: ${data.error || data.message || response.statusText}`);
       return;
     }
 
