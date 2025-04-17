@@ -5,6 +5,10 @@
 .cart-table button {
     margin-top: 1rem;
 }
+.main-content-cart{
+    max-width: 35rem;
+    margin: auto;
+}
 
 main button {
     border: 0;
